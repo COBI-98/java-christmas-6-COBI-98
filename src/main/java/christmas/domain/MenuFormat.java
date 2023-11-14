@@ -14,21 +14,24 @@ public record MenuFormat(List<String> menuFormat) {
     }
 
     private void validateContainsDelimiterFromMenuFormat(List<String> menuFormat) {
-        boolean validatedResult = menuFormat.stream().allMatch(
+        boolean hasDelimiter = menuFormat.stream().allMatch(
                 menu -> menu.contains(SPLIT_DELIMITER)
         );
 
-        if (!validatedResult){
+        if (!hasDelimiter){
             throw new IllegalArgumentException(INVALID_ORDER_FORMAT.getMessage());
         }
     }
 
     private void validateEmptyFromMenuFormat(List<String> menuFormat) {
-        boolean validatedResult = !menuFormat.isEmpty() && menuFormat.stream().allMatch(
+        boolean hasString = !menuFormat.isEmpty() && menuFormat.stream().allMatch(
                 menu -> !menu.isEmpty()
         );
 
-        if (!validatedResult){
+        if (!hasString){
+            throw new IllegalArgumentException(INVALID_ORDER_FORMAT.getMessage());
+        }
+    }
             throw new IllegalArgumentException(INVALID_ORDER_FORMAT.getMessage());
         }
     }
