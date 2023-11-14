@@ -44,4 +44,19 @@ class MenusTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(exceptionMessage);
     }
+
+    @DisplayName("validateBeverageFromMenus() : 음료만 주문한 경우")
+    @ParameterizedTest
+    @CsvSource({"레드와인,제로콜라,3","제로콜라,샴페인,2"})
+    void validateBeverageFromMenus_fail(String menu1, String menu2, String quantity) throws Exception{
+        //given
+        String exceptionMessage = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
+        List<Menu> menus = List.of(new Menu(menu1, quantity),
+                new Menu(menu2, quantity));
+
+        //when //then
+        assertThatThrownBy(() -> new Menus(menus))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(exceptionMessage);
+    }
 }
