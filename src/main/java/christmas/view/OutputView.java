@@ -7,4 +7,8 @@ public class OutputView {
     public static void printRestaurantIntro(){
         System.out.println(RESTAURANT_EVENT_INTRO);
     }
+
+    public static void printException(Exception exception) {
+        System.out.println(exception.getMessage());
+    }
 }
