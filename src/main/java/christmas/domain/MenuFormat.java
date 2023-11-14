@@ -16,7 +16,11 @@ public record MenuFormat(List<String> menuFormat) {
         boolean validatedResult = menuFormat.stream().allMatch(
                 menu -> menu.contains(SPLIT_DELIMITER)
         );
-        if (validatedResult == false){
+
+        if (!validatedResult){
+            throw new IllegalArgumentException(INVALID_ORDER_FORMAT.getMessage());
+        }
+    }
             throw new IllegalArgumentException(INVALID_ORDER_FORMAT.getMessage());
         }
     }
