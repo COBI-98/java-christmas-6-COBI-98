@@ -2,6 +2,7 @@ package christmas.domain;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public enum MenuGroup {
     APPETIZER("에피타이저", Arrays.asList(MenuType.BUTTON_MUSHROOM_SOUP, MenuType.TAPAS, MenuType.CAESAR_SALAD)),
@@ -15,6 +16,14 @@ public enum MenuGroup {
     MenuGroup(String title, List<MenuType> menuList) {
         this.title = title;
         this.menuList = menuList;
+    }
+
+    @Override
+    public String toString() {
+        return "<" + title + ">\n" +
+                menuList.stream()
+                        .map(MenuType::toString)
+                        .collect(Collectors.joining(", "));
     }
 
     public String getTitle() {
