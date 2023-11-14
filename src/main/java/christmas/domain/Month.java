@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import static christmas.message.ErrorMessages.INVALID_DAY_RANGE;
+import static christmas.message.ErrorMessages.INVALID_DATE_RANGE;
 
 public record Month(int month) {
 
@@ -13,7 +13,7 @@ public record Month(int month) {
 
     private void validateRangeFromMonth(int day) {
         if (day < MIN_MONTH || day > MAX_MONTH){
-            throw new IllegalArgumentException(INVALID_DAY_RANGE.getMessage());
+            throw new IllegalArgumentException(INVALID_DATE_RANGE.getMessage());
         }
     }
 }
