@@ -11,6 +11,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class MenuFormatTest {
@@ -39,6 +40,23 @@ class MenuFormatTest {
         assertThatThrownBy(() -> new MenuFormat(List.of(menu1, menu2, menu3)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(exceptionMessage);
+    }
+
+    @DisplayName("validateEmptyFromMenuFormat() : 메뉴 형식이 빈 문자열인 경우")
+    @ParameterizedTest
+    @CsvSource({
+            "'', '', ''",
+            "'', '', '초코케이크-1'"
+    })
+    void validateEmptyFromMenuFormat_fail(String menu1, String menu2, String menu3) throws Exception {
+        //given
+        String exceptionMessage = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
+
+        //when //then
+        assertThatThrownBy(() -> new MenuFormat(List.of(menu1, menu2, menu3)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(exceptionMessage);
+
     }
 
 }

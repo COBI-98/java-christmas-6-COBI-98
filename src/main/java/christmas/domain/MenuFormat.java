@@ -10,6 +10,7 @@ public record MenuFormat(List<String> menuFormat) {
 
     public MenuFormat {
         validateContainsDelimiterFromMenuFormat(menuFormat);
+        validateEmptyFromMenuFormat(menuFormat);
     }
 
     private void validateContainsDelimiterFromMenuFormat(List<String> menuFormat) {
@@ -21,6 +22,13 @@ public record MenuFormat(List<String> menuFormat) {
             throw new IllegalArgumentException(INVALID_ORDER_FORMAT.getMessage());
         }
     }
+
+    private void validateEmptyFromMenuFormat(List<String> menuFormat) {
+        boolean validatedResult = !menuFormat.isEmpty() && menuFormat.stream().allMatch(
+                menu -> !menu.isEmpty()
+        );
+
+        if (!validatedResult){
             throw new IllegalArgumentException(INVALID_ORDER_FORMAT.getMessage());
         }
     }
