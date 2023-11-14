@@ -59,4 +59,20 @@ class MenuFormatTest {
 
     }
 
+    @DisplayName("validateDuplicationDelimiterFromMenuFormant() : 연속된 구분자가 사용되는 경우")
+    @ParameterizedTest
+    @CsvSource({
+            "-----,초코케이크--2,--초코케이크-3"
+    })
+    void validateDuplicationDelimiterFromMenuFormant_fail(String menu1, String menu2, String menu3) throws Exception {
+        //given
+        String exceptionMessage = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
+
+        //when //then
+        assertThatThrownBy(() -> new MenuFormat(List.of(menu1, menu2, menu3)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(exceptionMessage);
+
+    }
+
 }

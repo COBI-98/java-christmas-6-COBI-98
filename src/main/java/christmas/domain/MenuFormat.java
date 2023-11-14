@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import static christmas.message.ErrorMessages.INVALID_DATE_RANGE;
 import static christmas.message.ErrorMessages.INVALID_ORDER_FORMAT;
 
 import java.util.List;
@@ -7,10 +8,12 @@ import java.util.List;
 public record MenuFormat(List<String> menuFormat) {
 
     private static final String SPLIT_DELIMITER = "-";
+    private static final String DUPLICATION_DELIMITER_FORMAT = String.format(".*--.*");
 
     public MenuFormat {
         validateContainsDelimiterFromMenuFormat(menuFormat);
         validateEmptyFromMenuFormat(menuFormat);
+        validateDuplicationDelimiterFromMenuFormant(menuFormat);
     }
 
     private void validateContainsDelimiterFromMenuFormat(List<String> menuFormat) {
@@ -32,6 +35,12 @@ public record MenuFormat(List<String> menuFormat) {
             throw new IllegalArgumentException(INVALID_ORDER_FORMAT.getMessage());
         }
     }
+
+    private void validateDuplicationDelimiterFromMenuFormant(List<String> menuFormat) {
+        boolean hasConsecutiveDelimiters = menuFormat.stream().anyMatch(
+                menu -> menu.matches(DUPLICATION_DELIMITER_FORMAT)
+        );
+        if (hasConsecutiveDelimiters) {
             throw new IllegalArgumentException(INVALID_ORDER_FORMAT.getMessage());
         }
     }
