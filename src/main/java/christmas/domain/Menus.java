@@ -8,9 +8,11 @@ import java.util.stream.Collectors;
 
 public record Menus(List<Menu> menuList) {
 
+    private static final int MAX_QUANTITY = 20;
 
     public Menus {
         validateDuplicateFromMenus(menuList);
+        validateMaxQuantityFromMenus(menuList);
     }
 
     private void validateDuplicateFromMenus(List<Menu> menuList) {
@@ -20,6 +22,14 @@ public record Menus(List<Menu> menuList) {
                 .count();
 
         if (menuList.size() != distinctCount){
+            throw new IllegalArgumentException(INVALID_ORDER_FORMAT.getMessage());
+        }
+    }
+    private void validateMaxQuantityFromMenus(List<Menu> menuList) {
+        int totalQuantity = menuList.stream()
+                .mapToInt(Menu::getMenuQuantity)
+                .sum();
+        if (totalQuantity > MAX_QUANTITY){
             throw new IllegalArgumentException(INVALID_ORDER_FORMAT.getMessage());
         }
     }
