@@ -8,9 +8,9 @@ import java.util.stream.Collectors;
 public class SplitOrderMenu {
     private static final String SPLIT_DELIMITER = ",";
 
-    public static List<String> splitOrderMenu(String input) {
+    public static MenuFormat splitOrderMenu(String input) {
 
-        return Arrays.stream(input.split(SPLIT_DELIMITER))
-                .collect(Collectors.toList());
+        return new MenuFormat(Arrays.stream(input.split(SPLIT_DELIMITER))
+                .collect(Collectors.toList()));
     }
 }
