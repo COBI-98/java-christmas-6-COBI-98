@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
 
 public enum MenuType {
     BUTTON_MUSHROOM_SOUP("양송이수프", 6_000),
@@ -30,6 +31,17 @@ public enum MenuType {
 
     public int getPrice() {
         return price;
+    }
+
+    public static MenuType findByMenuName(String title){
+        return Arrays.stream(MenuType.values())
+                .filter(menuType -> menuType.hasMenuName(title))
+                .findAny()
+                .orElse(null);
+    }
+
+    private boolean hasMenuName(String menuName) {
+        return title.equals(menuName);
     }
 
     @Override
