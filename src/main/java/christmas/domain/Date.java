@@ -1,7 +1,10 @@
 package christmas.domain;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.TextStyle;
+import java.util.Locale;
 
 public class Date {
     private static final int VISIT_YEAR = 2023;
@@ -19,5 +22,20 @@ public class Date {
     @Override
     public String toString() {
         return String.format("%s월 %s일", month.month(), day.day());
+    }
+    public int getYear() {
+        return year.year();
+    }
+
+    public int getMonth() {
+        return month.month();
+    }
+
+    public int getDay() {
+        return day.day();
+    }
+    public LocalDate createDateTimeFormat(){
+        LocalDate visitDay = LocalDate.of(getYear(), getMonth(), getDay());
+        return visitDay;
     }
 }
