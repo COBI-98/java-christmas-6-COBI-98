@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.calendar;
 
 import christmas.domain.calendar.Order;
 import christmas.domain.menu.Menu;
