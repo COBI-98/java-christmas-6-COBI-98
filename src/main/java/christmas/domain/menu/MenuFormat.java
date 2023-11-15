@@ -1,6 +1,5 @@
 package christmas.domain.menu;
 
-import static christmas.message.ErrorMessages.INVALID_DATE_RANGE;
 import static christmas.message.ErrorMessages.INVALID_ORDER_FORMAT;
 
 import java.util.List;
@@ -21,7 +20,7 @@ public record MenuFormat(List<String> menuFormat) {
                 menu -> menu.contains(SPLIT_DELIMITER)
         );
 
-        if (!hasDelimiter){
+        if (!hasDelimiter) {
             throw new IllegalArgumentException(INVALID_ORDER_FORMAT.getMessage());
         }
     }
@@ -31,7 +30,7 @@ public record MenuFormat(List<String> menuFormat) {
                 menu -> !menu.isEmpty()
         );
 
-        if (!hasString){
+        if (!hasString) {
             throw new IllegalArgumentException(INVALID_ORDER_FORMAT.getMessage());
         }
     }

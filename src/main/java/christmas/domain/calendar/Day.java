@@ -12,7 +12,7 @@ public record Day(int day) {
     }
 
     private void validateRangeFromDay(int day) {
-        if (day < MIN_DAY || day > EVEN_MONTHS_MAX_DAY){
+        if (day < MIN_DAY || day > EVEN_MONTHS_MAX_DAY) {
             throw new IllegalArgumentException(INVALID_DATE_RANGE.getMessage());
         }
     }

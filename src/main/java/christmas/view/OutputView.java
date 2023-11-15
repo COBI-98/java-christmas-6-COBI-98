@@ -1,13 +1,13 @@
 package christmas.view;
 
 import christmas.domain.calendar.Date;
+import christmas.domain.calendar.Order;
+import christmas.domain.calendar.Planner;
+import christmas.domain.event.FreeGiftEvent;
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.MenuGroup;
 import christmas.domain.menu.MenuType;
 import christmas.domain.menu.Menus;
-import christmas.domain.calendar.Order;
-import christmas.domain.calendar.Planner;
-import christmas.domain.event.FreeGiftEvent;
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -92,7 +92,7 @@ public class OutputView {
                 .filter(event -> event instanceof FreeGiftEvent)
                 .map(event -> ((FreeGiftEvent) event).getBenefitGift())
                 .forEach(menu -> {
-                    if (menu.getMenuName().equals(EVENTS_EMPTY)){
+                    if (menu.getMenuName().equals(EVENTS_EMPTY)) {
                         System.out.println(EVENTS_EMPTY);
                         return;
                     }
@@ -100,35 +100,35 @@ public class OutputView {
                 });
     }
 
-    private static void printBenefitList(Planner planner){
+    private static void printBenefitList(Planner planner) {
         System.out.println(RESTAURANT_BENEFIT_TITLE);
         if (isEventEmpty(planner)) {
             return;
         }
         planner.getEvents().stream()
                 .filter(event -> event.getBenefit() != NOT_PAY)
-                .map(event -> event.getEventName() + SEPARATOR_FORMAT + MINUS+
+                .map(event -> event.getEventName() + SEPARATOR_FORMAT + MINUS +
                         String.format(AMOUNT_FORMAT, formatPrice(event.getBenefit())))
                 .forEach(System.out::println);
         System.out.println();
     }
 
-    private static void printTotalBenefitAmount(Planner planner){
+    private static void printTotalBenefitAmount(Planner planner) {
         System.out.println(RESTAURANT_TOTAL_BENEFIT_TITLE);
-        if (planner.getAfterAmount() == NOT_PAY){
-            System.out.println(String.format(AMOUNT_FORMAT,planner.getAfterAmount()));
+        if (planner.getAfterAmount() == NOT_PAY) {
+            System.out.println(String.format(AMOUNT_FORMAT, planner.getAfterAmount()));
             System.out.println();
             return;
         }
-        System.out.println(MINUS + String.format(AMOUNT_FORMAT,formatPrice(planner.getAfterAmount())));
+        System.out.println(MINUS + String.format(AMOUNT_FORMAT, formatPrice(planner.getAfterAmount())));
         System.out.println();
     }
 
-    private static void printFinalPaymentAmount(Order order,Planner planner){
+    private static void printFinalPaymentAmount(Order order, Planner planner) {
         System.out.println(RESTAURANT_FINAL_PAYMENT_AMOUNT);
         int finalPaymentAmount = order.getBeforeMoney() - planner.getAfterAmount();
         finalPaymentAmount = calculateFreeGift(planner, finalPaymentAmount);
-        System.out.println(String.format(AMOUNT_FORMAT,formatPrice(finalPaymentAmount)));
+        System.out.println(String.format(AMOUNT_FORMAT, formatPrice(finalPaymentAmount)));
         System.out.println();
     }
 
@@ -137,7 +137,7 @@ public class OutputView {
                 .filter(event -> event instanceof FreeGiftEvent)
                 .map(event -> ((FreeGiftEvent) event).getBenefitGift())
                 .findFirst().orElse(null);
-        if (giveawayMenu != null){
+        if (giveawayMenu != null) {
             MenuType menu = MenuType.findByMenuName(giveawayMenu.getMenuName());
             finalPaymentAmount += menu.getPrice();
         }
@@ -150,7 +150,7 @@ public class OutputView {
     }
 
     private static boolean isEventEmpty(Planner planner) {
-        if (validateEventsEmpty(planner)){
+        if (validateEventsEmpty(planner)) {
             System.out.println(EVENTS_EMPTY);
             System.out.println();
             return true;

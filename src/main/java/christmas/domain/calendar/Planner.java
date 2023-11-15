@@ -19,7 +19,7 @@ public class Planner {
     private EventBadge eventBadge;
 
     public Planner(Date date, Order order) {
-        if (order.getBeforeMoney() < CHRISTMAS_EVENT_MIN_ORDER_AMOUNT){
+        if (order.getBeforeMoney() < CHRISTMAS_EVENT_MIN_ORDER_AMOUNT) {
             this.events = Collections.EMPTY_LIST;
             this.afterAmount = START_BENEFIT_AMOUNT;
             return;

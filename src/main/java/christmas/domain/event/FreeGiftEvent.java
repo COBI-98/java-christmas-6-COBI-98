@@ -1,9 +1,9 @@
 package christmas.domain.event;
 
 import christmas.domain.calendar.Date;
+import christmas.domain.calendar.Order;
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.MenuType;
-import christmas.domain.calendar.Order;
 
 public final class FreeGiftEvent implements Event {
 
@@ -30,7 +30,7 @@ public final class FreeGiftEvent implements Event {
     @Override
     public int calculateDiscount(Date date, Order order) {
         int beforeMoney = order.getBeforeMoney();
-        if (beforeMoney >= CHRISTMAS_EVENT_FREE_STANDARD){
+        if (beforeMoney >= CHRISTMAS_EVENT_FREE_STANDARD) {
             MenuType champagne = MenuType.CHAMPAGNE;
             benefitGift = new Menu(champagne.getTitle(), CHRISTMAS_EVENT_FREE_QUANTITY);
             benefit = champagne.getPrice();

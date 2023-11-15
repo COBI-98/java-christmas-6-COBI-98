@@ -1,15 +1,15 @@
 package christmas.controller;
 
 import christmas.domain.calendar.Date;
-import christmas.domain.menu.Menus;
 import christmas.domain.calendar.Order;
 import christmas.domain.calendar.Planner;
+import christmas.domain.menu.Menus;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
 public class UtecoRestaurantController {
 
-    public void startOperation(){
+    public void startOperation() {
         Date date = inputDate();
         Menus menus = inputMenus();
         Order order = new Order(menus);
@@ -26,9 +26,9 @@ public class UtecoRestaurantController {
     }
 
     private static Date createDate() {
-        try{
+        try {
             return new Date(InputView.inputDate());
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             OutputView.printException(e);
             return createDate();
         }
@@ -41,9 +41,9 @@ public class UtecoRestaurantController {
     }
 
     private static Menus createMenus() {
-        try{
+        try {
             return InputView.inputOrderMenu();
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             OutputView.printException(e);
             return createMenus();
         }

@@ -14,7 +14,7 @@ class MenuFormatTest {
 
     @DisplayName("constructor() : 메뉴 형식 생성")
     @Test
-    void menu_formant_constructor() throws Exception{
+    void menu_formant_constructor() throws Exception {
         //given
         MenuFormat menuFormat = new MenuFormat(List.of("해산물파스타-2", "레드와인-1", "초코케이크-1"));
 

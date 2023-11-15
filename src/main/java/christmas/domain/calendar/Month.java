@@ -12,7 +12,7 @@ public record Month(int month) {
     }
 
     private void validateRangeFromMonth(int day) {
-        if (day < MIN_MONTH || day > MAX_MONTH){
+        if (day < MIN_MONTH || day > MAX_MONTH) {
             throw new IllegalArgumentException(INVALID_DATE_RANGE.getMessage());
         }
     }

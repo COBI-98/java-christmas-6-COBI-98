@@ -20,7 +20,7 @@ public class Date {
         this.dayFormat = createVisitingDayFormat();
     }
 
-    public String createVisitingDayFormat(){
+    public String createVisitingDayFormat() {
         LocalDate visitDay = createDateTimeFormat();
         DayOfWeek dayOfWeek = visitDay.getDayOfWeek();
         return dayOfWeek.getDisplayName(TextStyle.FULL, Locale.KOREA);
@@ -32,13 +32,13 @@ public class Date {
         return dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY;
     }
 
-    public boolean isSunday(){
+    public boolean isSunday() {
         LocalDate visitDay = createDateTimeFormat();
         DayOfWeek dayOfWeek = visitDay.getDayOfWeek();
         return dayOfWeek == DayOfWeek.SUNDAY;
     }
 
-    public LocalDate createDateTimeFormat(){
+    public LocalDate createDateTimeFormat() {
         return LocalDate.of(getYear(), getMonth(), getDay());
     }
 

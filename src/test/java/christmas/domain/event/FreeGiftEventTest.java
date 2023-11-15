@@ -3,9 +3,9 @@ package christmas.domain.event;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.domain.calendar.Date;
+import christmas.domain.calendar.Order;
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.Menus;
-import christmas.domain.calendar.Order;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,7 +17,7 @@ class FreeGiftEventTest {
     @ParameterizedTest
     @CsvSource({"티본스테이크,1,초코케이크,1", "티본스테이크,1,바비큐립,1"})
     void FreeGiftEvent_calculateDiscount_fail(
-            String menu1, String quantity1, String menu2, String quantity2) throws Exception{
+            String menu1, String quantity1, String menu2, String quantity2) throws Exception {
         //given
         int visitDay = 5;
         int expectedDiscount = 0;
@@ -37,7 +37,7 @@ class FreeGiftEventTest {
     @ParameterizedTest
     @CsvSource({"티본스테이크,3,초코케이크,3", "티본스테이크,1,바비큐립,2"})
     void FreeGiftEvent_calculateDiscount_success(
-            String menu1, String quantity1, String menu2, String quantity2) throws Exception{
+            String menu1, String quantity1, String menu2, String quantity2) throws Exception {
         //given
         int visitDay = 5;
         int expectedDiscount = 25_000;

@@ -1,9 +1,9 @@
 package christmas.domain.event;
 
 import christmas.domain.calendar.Date;
+import christmas.domain.calendar.Order;
 import christmas.domain.menu.MenuGroup;
 import christmas.domain.menu.MenuType;
-import christmas.domain.calendar.Order;
 
 public final class WeekdayDiscountEvent implements Event {
 

@@ -10,7 +10,7 @@ class YearTest {
 
     @DisplayName("constructor() : 방문년도 생성")
     @Test
-    void month_constructor_success() throws Exception{
+    void month_constructor_success() throws Exception {
         //given
         Year visitYear = selectYear();
 

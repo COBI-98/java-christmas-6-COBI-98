@@ -3,9 +3,9 @@ package christmas.domain.event;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.domain.calendar.Date;
+import christmas.domain.calendar.Order;
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.Menus;
-import christmas.domain.calendar.Order;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,7 +17,7 @@ class ChristmasDailyDiscountEventTest {
     @DisplayName("isApplicable() : 유효한 이벤트 날짜가 아닌 경우")
     @ParameterizedTest
     @ValueSource(ints = {26, 27, 30})
-    void ChristmasDailyDiscountEvent_isApplicable_fail(int day) throws Exception{
+    void ChristmasDailyDiscountEvent_isApplicable_fail(int day) throws Exception {
         //given
         Event christmasDailyDiscountEvent = new ChristmasDailyDiscountEvent();
         Date visitOfDate = new Date(day);
@@ -32,7 +32,7 @@ class ChristmasDailyDiscountEventTest {
     @DisplayName("calculateDiscount() : 크리스마스 할인 금액 확인")
     @ParameterizedTest
     @CsvSource({"1,1000", "20,2900", "25,3400"})
-    void ChristmasDailyDiscountEvent_calculateDiscount_success(int day, int discountAmount) throws Exception{
+    void ChristmasDailyDiscountEvent_calculateDiscount_success(int day, int discountAmount) throws Exception {
         //given
         Event christmasDailyDiscountEvent = new ChristmasDailyDiscountEvent();
         Date visitOfDate = new Date(day);

@@ -21,7 +21,7 @@ public record Menus(List<Menu> menuList) {
                 .distinct()
                 .count();
 
-        if (menuList.size() != distinctCount){
+        if (menuList.size() != distinctCount) {
             throw new IllegalArgumentException(INVALID_ORDER_FORMAT.getMessage());
         }
     }
@@ -30,7 +30,7 @@ public record Menus(List<Menu> menuList) {
         int totalQuantity = menuList.stream()
                 .mapToInt(Menu::getMenuQuantity)
                 .sum();
-        if (totalQuantity > MAX_QUANTITY){
+        if (totalQuantity > MAX_QUANTITY) {
             throw new IllegalArgumentException(INVALID_ORDER_FORMAT.getMessage());
         }
     }
@@ -41,7 +41,7 @@ public record Menus(List<Menu> menuList) {
 
         List<MenuGroup> menuGroups = findAllByMenuGroup(menuTypes);
 
-        if (menuGroups.size() == 1 && menuGroups.contains(MenuGroup.BEVERAGE)){
+        if (menuGroups.size() == 1 && menuGroups.contains(MenuGroup.BEVERAGE)) {
             throw new IllegalArgumentException(INVALID_ORDER_FORMAT.getMessage());
         }
     }

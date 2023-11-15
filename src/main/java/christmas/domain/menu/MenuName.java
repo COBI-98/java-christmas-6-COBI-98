@@ -9,7 +9,7 @@ public record MenuName(String name) {
     }
 
     private void validateRestaurantContainsFromMenuName(String name) {
-        if (MenuType.findByMenuName(name) == null){
+        if (MenuType.findByMenuName(name) == null) {
             throw new IllegalArgumentException(INVALID_ORDER_FORMAT.getMessage());
         }
     }

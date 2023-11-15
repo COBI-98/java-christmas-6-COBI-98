@@ -19,7 +19,7 @@ class PlannerTest {
     @ParameterizedTest
     @CsvSource({"타파스,1,제로콜라,1", "양송이수프,1,제로콜라,1"})
     void planner_constructor_fail(
-            String menu1, String quantity1, String menu2, String quantity2) throws Exception{
+            String menu1, String quantity1, String menu2, String quantity2) throws Exception {
         //given
         Date visitDay = new Date(3);
         Order order = createOrder(menu1, quantity1, menu2, quantity2);
@@ -31,7 +31,7 @@ class PlannerTest {
 
     @DisplayName("constructor() : 이벤트 할인 혜택 적용 ")
     @Test
-    void planner_constructor_success() throws Exception{
+    void planner_constructor_success() throws Exception {
         //given
         Order order = createOrder();
         Date visitDay = new Date(3);

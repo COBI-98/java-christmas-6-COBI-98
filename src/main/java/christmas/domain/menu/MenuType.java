@@ -34,7 +34,7 @@ public enum MenuType {
         return price;
     }
 
-    public static MenuType findByMenuName(String title){
+    public static MenuType findByMenuName(String title) {
         return Arrays.stream(MenuType.values())
                 .filter(menuType -> menuType.hasMenuName(title))
                 .findAny()

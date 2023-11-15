@@ -2,8 +2,6 @@ package christmas.domain.menu;
 
 import static christmas.message.ErrorMessages.INVALID_ORDER_FORMAT;
 
-import christmas.message.ErrorMessages;
-
 public record MenuQuantity(String quantity) {
 
     private static final int MIN_QUANTITY = 1;
@@ -29,9 +27,9 @@ public record MenuQuantity(String quantity) {
         }
     }
 
-    private void validateRangeFromMenuQuantity(String quantity){
+    private void validateRangeFromMenuQuantity(String quantity) {
         int quantityNumber = convertToInt(quantity);
-        if (quantityNumber < MIN_QUANTITY || quantityNumber > MAX_QUANTITY){
+        if (quantityNumber < MIN_QUANTITY || quantityNumber > MAX_QUANTITY) {
             throw new IllegalArgumentException(INVALID_ORDER_FORMAT.getMessage());
         }
     }

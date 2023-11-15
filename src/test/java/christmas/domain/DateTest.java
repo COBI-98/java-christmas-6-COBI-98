@@ -12,7 +12,7 @@ class DateTest {
 
     @DisplayName("constructor() : 방문 날짜를 구현한다.")
     @Test
-    void date_constructor_success() throws Exception{
+    void date_constructor_success() throws Exception {
         //given
         Date date = new Date(25);
 
@@ -22,7 +22,7 @@ class DateTest {
 
     @DisplayName("createDateTimeFormat() : 날짜 형식을 구현한다.")
     @Test
-    void createDateTimeFormat_success() throws Exception{
+    void createDateTimeFormat_success() throws Exception {
         //given
         Date date = new Date(25);
 
@@ -32,8 +32,8 @@ class DateTest {
 
     @DisplayName("isWeekend() : 금요일, 토요일인 경우")
     @ParameterizedTest
-    @ValueSource(ints = {8,9})
-    void date_isWeekend_success(int day) throws Exception{
+    @ValueSource(ints = {8, 9})
+    void date_isWeekend_success(int day) throws Exception {
         //given
         Date date = new Date(day);
 
@@ -43,8 +43,8 @@ class DateTest {
 
     @DisplayName("isWeekend() : 평일인 경우")
     @ParameterizedTest
-    @ValueSource(ints = {10,11,12,13,14})
-    void date_isWeekend_fail(int day) throws Exception{
+    @ValueSource(ints = {10, 11, 12, 13, 14})
+    void date_isWeekend_fail(int day) throws Exception {
         //given
         Date date = new Date(day);
 

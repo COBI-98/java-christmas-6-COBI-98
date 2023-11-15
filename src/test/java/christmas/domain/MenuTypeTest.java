@@ -10,7 +10,7 @@ class MenuTypeTest {
 
     @DisplayName("toString() : 메뉴 타입 요구사항 재정의")
     @Test
-    void menu_type_to_string_success() throws Exception{
+    void menu_type_to_string_success() throws Exception {
         //given
         MenuType buttonMushroomSoup = MenuType.BUTTON_MUSHROOM_SOUP;
 
