@@ -19,8 +19,11 @@ public class OutputView {
     private static final String RESTAURANT_BEFORE_DISCOUNT_TOTAL_PRICE = "<할인 전 총주문 금액>";
     private static final String RESTAURANT_FREE_GIFT_TITLE = "<증정 메뉴>";
     private static final String RESTAURANT_BENEFIT_TITLE = "<혜택 내역>";
+    private static final String RESTAURANT_TOTAL_BENEFIT_TITLE = "<총혜택 금액>";
+    private static final String RESTAURANT_FINAL_PAYMENT_AMOUNT = "<할인 후 예상 결제 금액>";
     private static final String AMOUNT_NOTATION = "#,###";
     private static final String AMOUNT_FORMAT = "%s원";
+    private static final String EVENTS_EMPTY = "없음";
 
     public static void printRestaurantIntro() {
         System.out.println(RESTAURANT_EVENT_INTRO);
@@ -101,6 +104,26 @@ public class OutputView {
         System.out.println("-" + String.format(AMOUNT_FORMAT,formatPrice(planner.getAfterAmount())));
         System.out.println();
     }
+
+    public static void printFinalPaymentAmount(Order order,Planner planner){
+        System.out.println(RESTAURANT_FINAL_PAYMENT_AMOUNT);
+        int finalPaymentAmount = order.getBeforeMoney() - planner.getAfterAmount();
+        finalPaymentAmount = calculateFreeGift(planner, finalPaymentAmount);
+        System.out.println(String.format(AMOUNT_FORMAT,formatPrice(finalPaymentAmount)));
+        System.out.println();
+    }
+
+    private static int calculateFreeGift(Planner planner, int finalPaymentAmount) {
+        Menu giveawayMenu = planner.getEvents().stream()
+                .filter(event -> event instanceof FreeGiftEvent)
+                .map(event -> ((FreeGiftEvent) event).getBenefitGift())
+                .findFirst().orElse(null);
+        if (giveawayMenu != null){
+            MenuType menu = MenuType.findByMenuName(giveawayMenu.getMenuName());
+            finalPaymentAmount += menu.getPrice();
+        }
+        return finalPaymentAmount;
+    }
     private static boolean isEventEmpty(Planner planner) {
         if (validateEventsEmpty(planner)){
             System.out.println(EVENTS_EMPTY);
@@ -109,6 +132,11 @@ public class OutputView {
         }
         return false;
     }
+
+    private static boolean validateEventsEmpty(Planner planner) {
+        return planner.getEvents().isEmpty();
+    }
+
     private static String formatPrice(int totalPrice) {
         DecimalFormat decimalFormat = new DecimalFormat(AMOUNT_NOTATION);
         return decimalFormat.format(totalPrice);
