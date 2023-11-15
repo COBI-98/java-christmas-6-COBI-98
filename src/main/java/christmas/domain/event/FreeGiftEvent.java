@@ -4,6 +4,7 @@ import christmas.domain.Date;
 import christmas.domain.Menu;
 import christmas.domain.MenuType;
 import christmas.domain.Order;
+import net.bytebuddy.implementation.bind.annotation.Empty;
 
 public final class FreeGiftEvent implements Event {
 
@@ -13,7 +14,7 @@ public final class FreeGiftEvent implements Event {
     private static final int CHRISTMAS_EVENT_FREE_STANDARD = 120_000;
     private static final String CHRISTMAS_EVENT_FREE_QUANTITY = "1";
     private static final String FREE_GIFT_EVENT_TITLE = "증정 이벤트";
-    private Menu benefitGift;
+    private Menu benefitGift = new Menu(MenuType.EMPTY.getTitle(), CHRISTMAS_EVENT_FREE_QUANTITY);
     private int benefit;
 
     @Override

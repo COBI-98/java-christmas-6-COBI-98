@@ -15,7 +15,8 @@ public enum MenuType {
     ICE_CREAM("아이스크림", 5_000),
     ZERO_COLA("제로콜라", 3_000),
     RED_WINE("레드와인", 60_000),
-    CHAMPAGNE("샴페인", 25_000);
+    CHAMPAGNE("샴페인", 25_000),
+    EMPTY("없음", 0);
 
     private final String title;
     private final int price;
