@@ -34,7 +34,7 @@ class ChristmasDailyDiscountEventTest {
     @DisplayName("calculateDiscount() : 크리스마스 할인 금액 확인")
     @ParameterizedTest
     @CsvSource({"1,1000", "20,2900", "25,3400"})
-    void ChristmasDailyDiscountEvent_calculateDiscount_(int day, int discountAmount) throws Exception{
+    void ChristmasDailyDiscountEvent_calculateDiscount_success(int day, int discountAmount) throws Exception{
         //given
         Event christmasDailyDiscountEvent = new ChristmasDailyDiscountEvent();
         Date visitOfDate = new Date(day);
