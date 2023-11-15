@@ -13,16 +13,37 @@ public class Date {
     private Month month;
     private Day day;
 
+    private String dayFormat;
+
     public Date(int day) {
         this.year = new Year(VISIT_YEAR);
         this.month = new Month(VISIT_MONTH);
         this.day = new Day(day);
+        this.dayFormat = createVisitingDayFormat();
+    }
+
+    public String createVisitingDayFormat(){
+        LocalDate visitDay = createDateTimeFormat();
+        DayOfWeek dayOfWeek = visitDay.getDayOfWeek();
+        return dayOfWeek.getDisplayName(TextStyle.FULL, Locale.KOREA);
+    }
+
+    public boolean isWeekend() {
+        LocalDate visitDay = createDateTimeFormat();
+        DayOfWeek dayOfWeek = visitDay.getDayOfWeek();
+        return dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY;
+    }
+
+    public LocalDate createDateTimeFormat(){
+        LocalDate visitDay = LocalDate.of(getYear(), getMonth(), getDay());
+        return visitDay;
     }
 
     @Override
     public String toString() {
         return String.format("%s월 %s일", month.month(), day.day());
     }
+
     public int getYear() {
         return year.year();
     }
@@ -34,8 +55,8 @@ public class Date {
     public int getDay() {
         return day.day();
     }
-    public LocalDate createDateTimeFormat(){
-        LocalDate visitDay = LocalDate.of(getYear(), getMonth(), getDay());
-        return visitDay;
+
+    public String getDayFormat() {
+        return dayFormat;
     }
 }
