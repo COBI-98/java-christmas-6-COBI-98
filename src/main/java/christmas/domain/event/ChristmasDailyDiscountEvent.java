@@ -35,6 +35,7 @@ public final class ChristmasDailyDiscountEvent implements Event {
         LocalDate startDay = LocalDate.of(CHRISTMAS_EVENT_YEAR, CHRISTMAS_EVENT_MONTH, CHRISTMAS_EVENT_MIN_DAY);
         LocalDate visitDay = date.createDateTimeFormat();
         Period period = Period.between(startDay, visitDay);
-        return CHRISTMAS_EVENT_START_MONEY + CHRISTMAS_EVENT_DISCOUNT_UNIT * period.getDays();
+        benefit = CHRISTMAS_EVENT_START_MONEY + CHRISTMAS_EVENT_DISCOUNT_UNIT * period.getDays();
+        return benefit;
     }
 }
