@@ -23,6 +23,10 @@ public class OutputView {
     private static final String RESTAURANT_FINAL_PAYMENT_AMOUNT = "<할인 후 예상 결제 금액>";
     private static final String RESTAURANT_EVENT_BADGE_TITLE = "<12월 이벤트 배지>";
     private static final String AMOUNT_NOTATION = "#,###";
+    private static final String LINE_SEPARATOR = "\n";
+    private static final int NOT_PAY = 0;
+    private static final String SEPARATOR_FORMAT = ": -";
+    private static final String MINUS = "-";
     private static final String AMOUNT_FORMAT = "%s원";
     private static final String EVENTS_EMPTY = "없음";
 
@@ -35,7 +39,7 @@ public class OutputView {
                 MenuGroup.BEVERAGE);
 
         menuPanList.stream()
-                .map(menuGroup -> menuGroup.toString() + "\n")
+                .map(menuGroup -> menuGroup.toString() + LINE_SEPARATOR)
                 .forEach(System.out::println);
     }
 
@@ -102,9 +106,9 @@ public class OutputView {
             return;
         }
         planner.getEvents().stream()
-                .filter(event -> event.getBenefit() != 0)
+                .filter(event -> event.getBenefit() != NOT_PAY)
                 .map(event -> event.getEventName() +
-                        ": -" +
+                        SEPARATOR_FORMAT +
                         String.format(AMOUNT_FORMAT, formatPrice(event.getBenefit())))
                 .forEach(System.out::println);
         System.out.println();
@@ -112,12 +116,12 @@ public class OutputView {
 
     private static void printTotalBenefitAmount(Planner planner){
         System.out.println(RESTAURANT_TOTAL_BENEFIT_TITLE);
-        if (planner.getAfterAmount() == 0){
+        if (planner.getAfterAmount() == NOT_PAY){
             System.out.println(String.format(AMOUNT_FORMAT,planner.getAfterAmount()));
             System.out.println();
             return;
         }
-        System.out.println("-" + String.format(AMOUNT_FORMAT,formatPrice(planner.getAfterAmount())));
+        System.out.println(MINUS + String.format(AMOUNT_FORMAT,formatPrice(planner.getAfterAmount())));
         System.out.println();
     }
 
