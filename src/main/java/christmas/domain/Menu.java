@@ -21,4 +21,9 @@ public class Menu {
     private int stringQuantityToInt(String quantity) {
         return Integer.parseInt(quantity);
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s %s개", menuName.name(), menuQuantity.quantity());
+    }
 }
