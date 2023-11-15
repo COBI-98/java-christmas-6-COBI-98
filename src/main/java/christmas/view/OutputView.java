@@ -21,6 +21,7 @@ public class OutputView {
     private static final String RESTAURANT_BENEFIT_TITLE = "<혜택 내역>";
     private static final String RESTAURANT_TOTAL_BENEFIT_TITLE = "<총혜택 금액>";
     private static final String RESTAURANT_FINAL_PAYMENT_AMOUNT = "<할인 후 예상 결제 금액>";
+    private static final String RESTAURANT_EVENT_BADGE_TITLE = "<12월 이벤트 배지>";
     private static final String AMOUNT_NOTATION = "#,###";
     private static final String AMOUNT_FORMAT = "%s원";
     private static final String EVENTS_EMPTY = "없음";
@@ -124,6 +125,12 @@ public class OutputView {
         }
         return finalPaymentAmount;
     }
+
+    public static void printRestaurantEventBadge(Planner planner) {
+        System.out.println(RESTAURANT_EVENT_BADGE_TITLE);
+        System.out.println(planner.getEventBadge().getName());
+    }
+
     private static boolean isEventEmpty(Planner planner) {
         if (validateEventsEmpty(planner)){
             System.out.println(EVENTS_EMPTY);
