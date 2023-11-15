@@ -18,6 +18,7 @@ public class OutputView {
     private static final String RESTAURANT_ORDER_MENU_TITLE = "<주문 메뉴>";
     private static final String RESTAURANT_BEFORE_DISCOUNT_TOTAL_PRICE = "<할인 전 총주문 금액>";
     private static final String RESTAURANT_FREE_GIFT_TITLE = "<증정 메뉴>";
+    private static final String RESTAURANT_BENEFIT_TITLE = "<혜택 내역>";
     private static final String AMOUNT_NOTATION = "#,###";
 
     public static void printRestaurantIntro() {
@@ -73,6 +74,18 @@ public class OutputView {
                     }
                     System.out.println(menu.toString());
                 });
+    }
+
+    public static void printBenefitList(Planner planner){
+        System.out.println(RESTAURANT_BENEFIT_TITLE);
+        if (isEventEmpty(planner)) {
+            return;
+        }
+        planner.getEvents().stream()
+                .filter(event -> event.getBenefit() != 0)
+                .map(event -> event.getEventName() + ": -" + formatPrice(event.getBenefit()) + "원")
+                .forEach(System.out::println);
+        System.out.println();
     }
     private static boolean isEventEmpty(Planner planner) {
         if (validateEventsEmpty(planner)){
