@@ -15,6 +15,7 @@ public class Planner {
     private static final int START_BENEFIT_AMOUNT = 0;
     private final List<Event> events;
     private int afterAmount;
+    private EventBadge eventBadge;
 
     public Planner(Date date, Order order) {
         if (order.getBeforeMoney() < CHRISTMAS_EVENT_MIN_ORDER_AMOUNT){
@@ -47,5 +48,9 @@ public class Planner {
 
     public int getAfterAmount() {
         return afterAmount;
+    }
+
+    public EventBadge getEventBadge() {
+        return EventBadge.findByBadgeType(afterAmount);
     }
 }
