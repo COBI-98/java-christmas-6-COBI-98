@@ -25,7 +25,7 @@ public class OutputView {
     private static final String AMOUNT_NOTATION = "#,###";
     private static final String LINE_SEPARATOR = "\n";
     private static final int NOT_PAY = 0;
-    private static final String SEPARATOR_FORMAT = ": -";
+    private static final String SEPARATOR_FORMAT = ": ";
     private static final String MINUS = "-";
     private static final String AMOUNT_FORMAT = "%s원";
     private static final String EVENTS_EMPTY = "없음";
@@ -107,8 +107,7 @@ public class OutputView {
         }
         planner.getEvents().stream()
                 .filter(event -> event.getBenefit() != NOT_PAY)
-                .map(event -> event.getEventName() +
-                        SEPARATOR_FORMAT +
+                .map(event -> event.getEventName() + SEPARATOR_FORMAT + MINUS+
                         String.format(AMOUNT_FORMAT, formatPrice(event.getBenefit())))
                 .forEach(System.out::println);
         System.out.println();
