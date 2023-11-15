@@ -20,6 +20,7 @@ public class OutputView {
     private static final String RESTAURANT_FREE_GIFT_TITLE = "<증정 메뉴>";
     private static final String RESTAURANT_BENEFIT_TITLE = "<혜택 내역>";
     private static final String AMOUNT_NOTATION = "#,###";
+    private static final String AMOUNT_FORMAT = "%s원";
 
     public static void printRestaurantIntro() {
         System.out.println(RESTAURANT_EVENT_INTRO);
@@ -83,7 +84,9 @@ public class OutputView {
         }
         planner.getEvents().stream()
                 .filter(event -> event.getBenefit() != 0)
-                .map(event -> event.getEventName() + ": -" + formatPrice(event.getBenefit()) + "원")
+                .map(event -> event.getEventName() +
+                        ": -" +
+                        String.format(AMOUNT_FORMAT, formatPrice(event.getBenefit())))
                 .forEach(System.out::println);
         System.out.println();
     }
@@ -91,11 +94,11 @@ public class OutputView {
     public static void printTotalBenefitAmount(Planner planner){
         System.out.println(RESTAURANT_TOTAL_BENEFIT_TITLE);
         if (planner.getAfterAmount() == 0){
-            System.out.println(planner.getAfterAmount() + "원");
+            System.out.println(String.format(AMOUNT_FORMAT,planner.getAfterAmount()));
             System.out.println();
             return;
         }
-        System.out.println("-" + formatPrice(planner.getAfterAmount()) + "원");
+        System.out.println("-" + String.format(AMOUNT_FORMAT,formatPrice(planner.getAfterAmount())));
         System.out.println();
     }
     private static boolean isEventEmpty(Planner planner) {
