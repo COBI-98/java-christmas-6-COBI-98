@@ -16,7 +16,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class ChristmasDailyDiscountEventTest {
 
-    @DisplayName("isApplicable() : 이벤트 날짜 유효가 아닌 경우")
+    @DisplayName("isApplicable() : 유효한 이벤트 날짜가 아닌 경우")
     @ParameterizedTest
     @ValueSource(ints = {26, 27, 30})
     void ChristmasDailyDiscountEvent_isApplicable_fail(int day) throws Exception{
