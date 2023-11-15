@@ -14,10 +14,14 @@ public final class WeekendDiscountEvent implements Event {
 
     @Override
     public boolean isApplicable(Date date) {
-        return date.getMonth() == CHRISTMAS_EVENT_MONTH &&
-                date.getDay() >= CHRISTMAS_EVENT_MIN_DAY &&
-                date.getDay() <= CHRISTMAS_EVENT_MAX_DAY &&
+        return isEventPeriod(date) &&
                 date.isWeekend();
+    }
+
+    private static boolean isEventPeriod(Date date) {
+        return date.getMonth() == CHRISTMAS_EVENT_MONTH &&
+                date.getDay() >= CHRISTMAS_EVENT_MIN_DAY
+                && date.getDay() <= CHRISTMAS_EVENT_MAX_DAY;
     }
 
     @Override

@@ -21,10 +21,13 @@ public final class ChristmasDailyDiscountEvent implements Event {
 
     @Override
     public boolean isApplicable(Date date) {
+        return isEventPeriod(date);
+    }
 
+    private static boolean isEventPeriod(Date date) {
         return date.getMonth() == CHRISTMAS_EVENT_MONTH &&
-                date.getDay() >= CHRISTMAS_EVENT_MIN_DAY &&
-                date.getDay() <= CHRISTMAS_EVENT_MAX_DAY;
+                date.getDay() >= CHRISTMAS_EVENT_MIN_DAY
+                && date.getDay() <= CHRISTMAS_EVENT_MAX_DAY;
     }
 
     @Override
