@@ -12,7 +12,6 @@ public class Date {
     private Year year;
     private Month month;
     private Day day;
-
     private String dayFormat;
 
     public Date(int day) {
@@ -34,9 +33,14 @@ public class Date {
         return dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY;
     }
 
+    public boolean isSunday(){
+        LocalDate visitDay = createDateTimeFormat();
+        DayOfWeek dayOfWeek = visitDay.getDayOfWeek();
+        return dayOfWeek == DayOfWeek.SUNDAY;
+    }
+
     public LocalDate createDateTimeFormat(){
-        LocalDate visitDay = LocalDate.of(getYear(), getMonth(), getDay());
-        return visitDay;
+        return LocalDate.of(getYear(), getMonth(), getDay());
     }
 
     @Override
