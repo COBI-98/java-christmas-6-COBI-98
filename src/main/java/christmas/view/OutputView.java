@@ -87,6 +87,17 @@ public class OutputView {
                 .forEach(System.out::println);
         System.out.println();
     }
+
+    public static void printTotalBenefitAmount(Planner planner){
+        System.out.println(RESTAURANT_TOTAL_BENEFIT_TITLE);
+        if (planner.getAfterAmount() == 0){
+            System.out.println(planner.getAfterAmount() + "원");
+            System.out.println();
+            return;
+        }
+        System.out.println("-" + formatPrice(planner.getAfterAmount()) + "원");
+        System.out.println();
+    }
     private static boolean isEventEmpty(Planner planner) {
         if (validateEventsEmpty(planner)){
             System.out.println(EVENTS_EMPTY);
