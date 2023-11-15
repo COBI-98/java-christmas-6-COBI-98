@@ -1,6 +1,5 @@
 package christmas.domain;
 
-import static christmas.message.ErrorMessages.INVALID_NUMBER_TYPE;
 import static christmas.message.ErrorMessages.INVALID_ORDER_FORMAT;
 
 import christmas.message.ErrorMessages;

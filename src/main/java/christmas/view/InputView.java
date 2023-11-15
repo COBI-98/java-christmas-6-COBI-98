@@ -1,6 +1,6 @@
 package christmas.view;
 
-import static christmas.message.ErrorMessages.INVALID_NUMBER_TYPE;
+import static christmas.message.ErrorMessages.INVALID_DATE_RANGE;
 
 import camp.nextstep.edu.missionutils.Console;
 import christmas.domain.MenuFormat;
@@ -28,7 +28,7 @@ public class InputView {
         try {
             return Integer.parseInt(input);
         }catch (NumberFormatException e){
-            throw new IllegalArgumentException(INVALID_NUMBER_TYPE.getMessage());
+            throw new IllegalArgumentException(INVALID_DATE_RANGE.getMessage());
         }
     }
 }
