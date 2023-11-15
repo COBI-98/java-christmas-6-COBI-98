@@ -1,12 +1,12 @@
 package christmas.view;
 
-import christmas.domain.Date;
-import christmas.domain.Menu;
-import christmas.domain.MenuGroup;
-import christmas.domain.MenuType;
-import christmas.domain.Menus;
-import christmas.domain.Order;
-import christmas.domain.Planner;
+import christmas.domain.calendar.Date;
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.MenuGroup;
+import christmas.domain.menu.MenuType;
+import christmas.domain.menu.Menus;
+import christmas.domain.calendar.Order;
+import christmas.domain.calendar.Planner;
 import christmas.domain.event.FreeGiftEvent;
 import java.text.DecimalFormat;
 import java.util.List;

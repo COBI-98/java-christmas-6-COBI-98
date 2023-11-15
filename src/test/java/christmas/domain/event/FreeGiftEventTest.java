@@ -1,18 +1,15 @@
 package christmas.domain.event;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-import christmas.domain.Date;
-import christmas.domain.Menu;
-import christmas.domain.Menus;
-import christmas.domain.Order;
+import christmas.domain.calendar.Date;
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.Menus;
+import christmas.domain.calendar.Order;
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 class FreeGiftEventTest {
 

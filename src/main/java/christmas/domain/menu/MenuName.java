@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.menu;
 
 import static christmas.message.ErrorMessages.INVALID_ORDER_FORMAT;
 

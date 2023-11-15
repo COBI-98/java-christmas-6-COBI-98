@@ -1,6 +1,7 @@
-package christmas.domain;
+package christmas.domain.calendar;
 
-import java.util.List;
+import christmas.domain.menu.MenuType;
+import christmas.domain.menu.Menus;
 
 public class Order {
 

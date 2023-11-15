@@ -1,8 +1,7 @@
-package christmas.domain;
+package christmas.domain.menu;
 
 import static christmas.message.ErrorMessages.INVALID_ORDER_FORMAT;
 
-import christmas.message.ErrorMessages;
 import java.util.List;
 import java.util.stream.Collectors;
 

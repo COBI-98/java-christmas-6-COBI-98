@@ -3,8 +3,8 @@ package christmas.view;
 import static christmas.message.ErrorMessages.INVALID_DATE_RANGE;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.domain.MenuFormat;
-import christmas.domain.Menus;
+import christmas.domain.menu.MenuFormat;
+import christmas.domain.menu.Menus;
 import christmas.util.SplitMenuQuantity;
 import christmas.util.SplitOrderMenu;
 

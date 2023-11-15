@@ -1,8 +1,8 @@
 package christmas.util;
 
-import christmas.domain.Menu;
-import christmas.domain.MenuFormat;
-import christmas.domain.Menus;
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.MenuFormat;
+import christmas.domain.menu.Menus;
 import java.util.stream.Collectors;
 
 public class SplitMenuQuantity {

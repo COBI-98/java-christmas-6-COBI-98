@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.calendar;
 
 import static christmas.message.ErrorMessages.INVALID_DATE_RANGE;
 

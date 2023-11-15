@@ -1,7 +1,8 @@
-package christmas.domain;
+package christmas.domain.calendar;
 
 import christmas.domain.event.ChristmasDailyDiscountEvent;
 import christmas.domain.event.Event;
+import christmas.domain.event.EventBadge;
 import christmas.domain.event.FreeGiftEvent;
 import christmas.domain.event.SpecialDiscountEvent;
 import christmas.domain.event.WeekdayDiscountEvent;

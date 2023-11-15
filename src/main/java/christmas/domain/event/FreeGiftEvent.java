@@ -1,10 +1,9 @@
 package christmas.domain.event;
 
-import christmas.domain.Date;
-import christmas.domain.Menu;
-import christmas.domain.MenuType;
-import christmas.domain.Order;
-import net.bytebuddy.implementation.bind.annotation.Empty;
+import christmas.domain.calendar.Date;
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.MenuType;
+import christmas.domain.calendar.Order;
 
 public final class FreeGiftEvent implements Event {
 

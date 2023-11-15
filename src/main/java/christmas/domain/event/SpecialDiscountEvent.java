@@ -1,7 +1,7 @@
 package christmas.domain.event;
 
-import christmas.domain.Date;
-import christmas.domain.Order;
+import christmas.domain.calendar.Date;
+import christmas.domain.calendar.Order;
 
 public final class SpecialDiscountEvent implements Event {
 

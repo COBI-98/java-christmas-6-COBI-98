@@ -1,8 +1,7 @@
-package christmas.domain;
+package christmas.domain.calendar;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.TextStyle;
 import java.util.Locale;
 
