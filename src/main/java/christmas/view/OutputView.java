@@ -39,12 +39,18 @@ public class OutputView {
                 .forEach(System.out::println);
     }
 
-    public static void printRestaurantEventPreview(Date date) {
+    public static void printBasicPreview(Date date, Menus menus, Order order) {
+        printRestaurantEventPreview(date);
+        printRestaurantOrderMenu(menus);
+        printTotalAmountBeforeDiscount(order);
+    }
+
+    private static void printRestaurantEventPreview(Date date) {
         System.out.println(String.format(RESTAURANT_EVENT_PREVIEW, date.toString()));
         System.out.println();
     }
 
-    public static void printRestaurantOrderMenu(Menus menus) {
+    private static void printRestaurantOrderMenu(Menus menus) {
         System.out.println(RESTAURANT_ORDER_MENU_TITLE);
         menus.menuList().stream()
                 .map(Menu::toString)
@@ -52,14 +58,23 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printTotalAmountBeforeDiscount(Order order) {
+    private static void printTotalAmountBeforeDiscount(Order order) {
         System.out.println(RESTAURANT_BEFORE_DISCOUNT_TOTAL_PRICE);
         int totalPrice = order.getBeforeMoney();
         System.out.println(String.format(AMOUNT_FORMAT, formatPrice(totalPrice)));
         System.out.println();
     }
 
-    public static void printFreeGift(Planner planner) {
+
+    public static void printPlanner(Order order, Planner planner) {
+        printFreeGift(planner);
+        printBenefitList(planner);
+        printTotalBenefitAmount(planner);
+        printFinalPaymentAmount(order, planner);
+        printRestaurantEventBadge(planner);
+    }
+
+    private static void printFreeGift(Planner planner) {
         System.out.println(RESTAURANT_FREE_GIFT_TITLE);
         if (isEventEmpty(planner)) {
             return;
@@ -81,7 +96,7 @@ public class OutputView {
                 });
     }
 
-    public static void printBenefitList(Planner planner){
+    private static void printBenefitList(Planner planner){
         System.out.println(RESTAURANT_BENEFIT_TITLE);
         if (isEventEmpty(planner)) {
             return;
@@ -95,7 +110,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printTotalBenefitAmount(Planner planner){
+    private static void printTotalBenefitAmount(Planner planner){
         System.out.println(RESTAURANT_TOTAL_BENEFIT_TITLE);
         if (planner.getAfterAmount() == 0){
             System.out.println(String.format(AMOUNT_FORMAT,planner.getAfterAmount()));
@@ -106,7 +121,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printFinalPaymentAmount(Order order,Planner planner){
+    private static void printFinalPaymentAmount(Order order,Planner planner){
         System.out.println(RESTAURANT_FINAL_PAYMENT_AMOUNT);
         int finalPaymentAmount = order.getBeforeMoney() - planner.getAfterAmount();
         finalPaymentAmount = calculateFreeGift(planner, finalPaymentAmount);
@@ -126,7 +141,7 @@ public class OutputView {
         return finalPaymentAmount;
     }
 
-    public static void printRestaurantEventBadge(Planner planner) {
+    private static void printRestaurantEventBadge(Planner planner) {
         System.out.println(RESTAURANT_EVENT_BADGE_TITLE);
         System.out.println(planner.getEventBadge().getName());
     }
