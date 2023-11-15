@@ -11,6 +11,7 @@ public final class WeekdayDiscountEvent implements Event {
     private static final int CHRISTMAS_EVENT_MIN_DAY = 1;
     private static final int CHRISTMAS_EVENT_MAX_DAY = 31;
     private static final int CHRISTMAS_EVENT_DESERT_DISCOUNT = 2_023;
+    private static final String WEEKDAY_DISCOUNT_EVENT_TITLE = "평일 할인";
     private int benefit;
 
     @Override
@@ -38,5 +39,15 @@ public final class WeekdayDiscountEvent implements Event {
                 })
                 .sum();
         return benefit;
+    }
+
+    @Override
+    public int getBenefit() {
+        return benefit;
+    }
+
+    @Override
+    public String getEventName() {
+        return WEEKDAY_DISCOUNT_EVENT_TITLE;
     }
 }

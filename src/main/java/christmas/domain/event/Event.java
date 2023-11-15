@@ -9,4 +9,9 @@ public sealed interface Event permits ChristmasDailyDiscountEvent, WeekdayDiscou
     boolean isApplicable(Date date);
 
     int calculateDiscount(Date date, Order order);
+
+    int getBenefit();
+
+    String getEventName();
+
 }

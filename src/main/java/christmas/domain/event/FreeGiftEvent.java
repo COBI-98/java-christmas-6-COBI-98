@@ -1,6 +1,7 @@
 package christmas.domain.event;
 
 import christmas.domain.Date;
+import christmas.domain.Menu;
 import christmas.domain.MenuType;
 import christmas.domain.Order;
 
@@ -10,7 +11,9 @@ public final class FreeGiftEvent implements Event {
     private static final int CHRISTMAS_EVENT_MIN_DAY = 1;
     private static final int CHRISTMAS_EVENT_MAX_DAY = 31;
     private static final int CHRISTMAS_EVENT_FREE_STANDARD = 120_000;
-    private String benefitGift;
+    private static final String CHRISTMAS_EVENT_FREE_QUANTITY = "1";
+    private static final String FREE_GIFT_EVENT_TITLE = "증정 이벤트";
+    private Menu benefitGift;
     private int benefit;
 
     @Override
@@ -29,9 +32,24 @@ public final class FreeGiftEvent implements Event {
         int beforeMoney = order.getBeforeMoney();
         if (beforeMoney >= CHRISTMAS_EVENT_FREE_STANDARD){
             MenuType champagne = MenuType.CHAMPAGNE;
-            benefitGift = champagne.getTitle();
+            benefitGift = new Menu(champagne.getTitle(), CHRISTMAS_EVENT_FREE_QUANTITY);
             benefit = champagne.getPrice();
         }
         return benefit;
     }
+
+    public Menu getBenefitGift() {
+        return benefitGift;
+    }
+
+    @Override
+    public int getBenefit() {
+        return benefit;
+    }
+
+    @Override
+    public String getEventName() {
+        return FREE_GIFT_EVENT_TITLE;
+    }
+
 }

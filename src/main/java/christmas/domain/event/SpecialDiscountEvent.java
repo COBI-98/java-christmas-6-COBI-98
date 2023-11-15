@@ -10,6 +10,7 @@ public final class SpecialDiscountEvent implements Event {
     private static final String CHRISTMAS_EVENT_DAY = "12월 25일";
     private static final int CHRISTMAS_EVENT_MAX_DAY = 31;
     private static final int HOLIDAY_DISCOUNT_MONEY = 1_000;
+    private static final String SPECIAL_DISCOUNT_EVENT_TITLE = "특별 할인";
     private int benefit;
 
     @Override
@@ -33,4 +34,13 @@ public final class SpecialDiscountEvent implements Event {
         return benefit;
     }
 
+    @Override
+    public int getBenefit() {
+        return benefit;
+    }
+
+    @Override
+    public String getEventName() {
+        return SPECIAL_DISCOUNT_EVENT_TITLE;
+    }
 }

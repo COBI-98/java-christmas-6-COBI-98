@@ -13,11 +13,8 @@ public final class ChristmasDailyDiscountEvent implements Event {
     private static final int CHRISTMAS_EVENT_MAX_DAY = 25;
     private static final int CHRISTMAS_EVENT_START_MONEY = 1_000;
     private static final int CHRISTMAS_EVENT_DISCOUNT_UNIT = 100;
+    private static final String CHRISTMAS_DAILY_DISCOUNT_EVENT_TITLE = "크리스마스 디데이 할인";
     private int benefit;
-
-    public ChristmasDailyDiscountEvent() {
-        this.benefit = benefit;
-    }
 
     @Override
     public boolean isApplicable(Date date) {
@@ -37,5 +34,15 @@ public final class ChristmasDailyDiscountEvent implements Event {
         Period period = Period.between(startDay, visitDay);
         benefit = CHRISTMAS_EVENT_START_MONEY + CHRISTMAS_EVENT_DISCOUNT_UNIT * period.getDays();
         return benefit;
+    }
+
+    @Override
+    public int getBenefit() {
+        return benefit;
+    }
+
+    @Override
+    public String getEventName() {
+        return CHRISTMAS_DAILY_DISCOUNT_EVENT_TITLE;
     }
 }
