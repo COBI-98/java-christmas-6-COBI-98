@@ -55,9 +55,7 @@ public class OutputView {
 
     public static void printFreeGift(Planner planner) {
         System.out.println(RESTAURANT_FREE_GIFT_TITLE);
-        if (validateEventsEmpty(planner)){
-            System.out.println(EVENTS_EMPTY);
-            System.out.println();
+        if (isEventEmpty(planner)) {
             return;
         }
         findByGiftMenu(planner);
@@ -75,6 +73,14 @@ public class OutputView {
                     }
                     System.out.println(menu.toString());
                 });
+    }
+    private static boolean isEventEmpty(Planner planner) {
+        if (validateEventsEmpty(planner)){
+            System.out.println(EVENTS_EMPTY);
+            System.out.println();
+            return true;
+        }
+        return false;
     }
     private static String formatPrice(int totalPrice) {
         DecimalFormat decimalFormat = new DecimalFormat(AMOUNT_NOTATION);
