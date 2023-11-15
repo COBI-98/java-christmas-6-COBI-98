@@ -21,7 +21,7 @@ class ChristmasDailyDiscountEventTest {
     @ValueSource(ints = {26, 27, 30})
     void ChristmasDailyDiscountEvent_isApplicable_fail(int day) throws Exception{
         //given
-        ChristmasDailyDiscountEvent christmasDailyDiscountEvent = new ChristmasDailyDiscountEvent();
+        Event christmasDailyDiscountEvent = new ChristmasDailyDiscountEvent();
         Date visitOfDate = new Date(day);
 
         //when 
@@ -36,7 +36,7 @@ class ChristmasDailyDiscountEventTest {
     @CsvSource({"1,1000", "20,2900", "25,3400"})
     void ChristmasDailyDiscountEvent_calculateDiscount_(int day, int discountAmount) throws Exception{
         //given
-        ChristmasDailyDiscountEvent christmasDailyDiscountEvent = new ChristmasDailyDiscountEvent();
+        Event christmasDailyDiscountEvent = new ChristmasDailyDiscountEvent();
         Date visitOfDate = new Date(day);
         Order order = createOrder();
 
