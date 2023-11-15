@@ -9,6 +9,7 @@ public class OutputView {
 
     private static final String RESTAURANT_EVENT_INTRO = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";
     private static final String RESTAURANT_EVENT_PREVIEW = "%s에 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
+    private static final String RESTAURANT_ORDER_MENU_TITLE = "<주문 메뉴>";
 
     public static void printRestaurantIntro(){
         System.out.println(RESTAURANT_EVENT_INTRO);
@@ -24,6 +25,13 @@ public class OutputView {
 
     public static void printRestaurantEventPreview(Date date) {
         System.out.println(String.format(RESTAURANT_EVENT_PREVIEW, date.toString()));
+    public static void printRestaurantOrderMenu(Menus menus) {
+        System.out.println(RESTAURANT_ORDER_MENU_TITLE);
+        menus.menuList().stream()
+                .map(Menu::toString)
+                .forEach(System.out::println);
+        System.out.println();
+    }
     }
 
     public static void printException(Exception exception) {
